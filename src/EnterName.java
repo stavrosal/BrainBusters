@@ -17,8 +17,12 @@ public class EnterName extends JFrame {
 	private JLabel img = new JLabel();
 	private JTextField field = new JTextField();
 	private JButton play = new JButton("Play");
+	private ImageIcon icon;
 	
 	public EnterName() {
+		icon = new ImageIcon("logo.png");
+		setIconImage(icon.getImage());
+		
 		text.setBounds(350, 350, 150, 50);
 		text.setFont(new Font("Calibri", Font.BOLD, 20));
 		
@@ -57,7 +61,7 @@ public class EnterName extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == play) {
 				try {
-					new SingleGame();
+					new SingleGame(0);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
