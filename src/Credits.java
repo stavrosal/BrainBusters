@@ -1,5 +1,6 @@
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,6 +11,7 @@ public class Credits extends JFrame{
 	private JLabel label2 = new JLabel("Back-end");
 	private JLabel back_end = new JLabel();
 	private JLabel front_end = new JLabel();
+	private ImageIcon icon;
 	
 	public Credits() {
 		label.setBounds(180, 0, 150, 150);
@@ -17,6 +19,9 @@ public class Credits extends JFrame{
 		
 		label2.setBounds(180, 150, 150, 100);
 		label2.setFont(new Font("Calibri", getFont().ITALIC, 30));
+		
+		icon = new ImageIcon("logo.png");
+		setIconImage(icon.getImage());
 		
 		panel.add(label);
 		panel.add(label2);

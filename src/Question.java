@@ -15,7 +15,7 @@ public class Question {
 		return question;
 	}
 	
-	public ArrayList<String> getAnswer(){
+	public ArrayList<String> getAnswers(){
 		return answers;
 	}
 	
