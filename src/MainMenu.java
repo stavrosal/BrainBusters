@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
@@ -57,7 +58,11 @@ public class MainMenu extends JFrame {
 		class ButtonListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == play) {
-					new EnterName();
+					try {
+						new SingleGame(0, 0, 0);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 				else if (e.getSource() == stats) {
 					

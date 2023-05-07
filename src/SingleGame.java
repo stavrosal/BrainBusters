@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,8 +20,7 @@ public class SingleGame extends JFrame{
 	private JPanel questionp = new JPanel(new FlowLayout());
 	private JPanel ansp1 = new JPanel(new FlowLayout());
 	private JPanel ansp2 = new JPanel(new FlowLayout());
-	private JPanel showRes = new JPanel();
-	private JPanel quitPanel = new JPanel(new FlowLayout());
+	private JPanel quitPanel = new JPanel();
 	private JLabel lab = new JLabel();
 	private JLabel lab2 = new JLabel();
 	private JButton option1 = new JButton();
@@ -31,13 +29,11 @@ public class SingleGame extends JFrame{
 	private JButton option4 = new JButton();
 	private JButton quit = new JButton();
 	private ImageIcon icon;
+			
 	
-	
-	private int count;
-	
-	
-	public SingleGame(int count) throws IOException {
-		this.count = count;
+	public SingleGame(int count, int corr, int wrong) throws IOException {
+
+		
 		ArrayList<Question> questions = new ArrayList<Question>();
 		String link = "https://www.quiztriviagames.com/multiple-choice-trivia-questions/";
 		
@@ -46,8 +42,7 @@ public class SingleGame extends JFrame{
 		
 		Border grayline = BorderFactory.createLineBorder(Color.gray);
 		questionp.setBorder(grayline);
-		
-		showRes.setLayout(new BoxLayout(showRes, BoxLayout.Y_AXIS));
+			
 		
 		option1.setPreferredSize(new Dimension(400, 50));
 		option2.setPreferredSize(new Dimension(400, 50));
@@ -64,8 +59,10 @@ public class SingleGame extends JFrame{
 		ansp1.add(option2);
 		ansp2.add(option3);
 		ansp2.add(option4);
-		showRes.add(lab2);
+		
+		quitPanel.add(lab2);
 		quitPanel.add(quit);
+		
 		
 		
 
@@ -80,7 +77,7 @@ public class SingleGame extends JFrame{
 		option4.setText(answers.get(3));
 		quit.setText("QUIT");
 		
-		ButtonListener listener = new ButtonListener(q.getCorrectAnswer(), count, this);
+		ButtonListener listener = new ButtonListener(q.getCorrectAnswer(), count, this, corr, wrong);
 		option1.addActionListener(listener);
 		option2.addActionListener(listener);
 		option3.addActionListener(listener);
@@ -94,14 +91,13 @@ public class SingleGame extends JFrame{
 		mainpanel.add(questionp);
 		mainpanel.add(ansp1);
 		mainpanel.add(ansp2);
-		mainpanel.add(showRes);
 		mainpanel.add(quitPanel);
 		
 		
 		
 		
 		this.setContentPane(mainpanel);
-		
+
 		this.setVisible(true);
 		this.setSize(1000, 800);
 		this.setTitle("BrainBusters");
@@ -114,31 +110,37 @@ public class SingleGame extends JFrame{
 		private String correct;
 		private int count;
 		private SingleGame window;
+		private int corr;
+		private int wrong;
 		
-		public ButtonListener(String correct, int count, SingleGame window) {
+		public ButtonListener(String correct, int count, SingleGame window, int corr, int wrong) {
 			this.correct = correct;
 			this.count = count;
 			this.window = window;
+			this.corr = corr;
+			this.wrong = wrong;
 		}
 		
 		public void actionPerformed(ActionEvent e) {
 			String ans = ((JButton) e.getSource()).getText();
+
 			
 			if (e.getSource() == option1) {
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			
@@ -146,51 +148,58 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == option3) {
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == option4) {
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == quit) {
+				new EnterName(corr, wrong);
 				window.dispose();
 			}
 		}
