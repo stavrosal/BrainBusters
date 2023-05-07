@@ -1,0 +1,2 @@
+#This folder is used to save the players' progress.
+#DON'T delete it! Otherwise a FileNotFound exception will be raised
