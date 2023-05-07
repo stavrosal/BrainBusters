@@ -1,17 +1,25 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 //import java.io.*;
 
-public class Player {
+public class Player implements Serializable{
 	private String name;
 	private int correct_answers;
 	private int wrong_answers;
-	private float win_rate;
+	private double win_rate;
 	
 	public Player(String name, int correct, int wrong) {
 		this.name = name;
 		this.correct_answers = correct;
 		this.wrong_answers = wrong;
 		if (wrong_answers != 0)
-			win_rate = correct_answers / wrong_answers;
+			win_rate = (double) correct_answers / wrong_answers; //convert one of them to double so the result will be also double
 		else
 			win_rate = 0;
 	}
@@ -28,15 +36,15 @@ public class Player {
 		return wrong_answers;
 	}
 	
-	public float getWinRate() {
+	public double getWinRate() {
 		return win_rate;
 	}
 	
 	
 	
-	/*public void saveStats() {
+	public void saveStats() {
 		try {
-			FileOutputStream player = new FileOutputStream(name + ".ser");
+			FileOutputStream player = new FileOutputStream("players/"+ name + ".ser");
 			ObjectOutputStream out = new ObjectOutputStream(player);
 			out.writeObject(this);
 			out.close();
@@ -44,6 +52,7 @@ public class Player {
 			System.out.println("An error occured while trying to write to the file");
 			e.printStackTrace();
 		}	
-	}*/	
+	}
+	
 	
 }

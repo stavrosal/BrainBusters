@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
 
-public class Registry {
+public class Registry implements Serializable {
 	private String name;
 	private ArrayList<Player> players = new ArrayList<Player>();
 	
@@ -13,12 +13,13 @@ public class Registry {
 		players.add(p);
 	}
 	
+	
 	public void saveRegistry() {
 		try {
-			FileOutputStream reg = new FileOutputStream(name + ".ser");
+			FileOutputStream reg = new FileOutputStream(name + ".ser", true);
 			ObjectOutputStream out;
 			out = new ObjectOutputStream(reg);
-			out.writeObject(this);
+			out.writeObject(this.players);
 			out.close();
 		} catch (IOException e) {
 			System.out.println("An error occured while saving the registry");
