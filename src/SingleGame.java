@@ -148,48 +148,54 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1, corr, wrong);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == option3) {
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1, corr, wrong);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == option4) {
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					corr++;
 				}
 				else {
 					lab2.setForeground(Color.RED);
-					window.lab2.setText("WRONG!");
-					try {
-						//window.dispose();
-						new SingleGame(count+1, corr, wrong);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					window.lab2.setText("WRONG!");	
+					wrong++;
+				}
+				try {
+					//window.dispose();
+					new SingleGame(count+1, corr, wrong);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == quit) {
