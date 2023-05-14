@@ -36,9 +36,14 @@ public class Stats extends JFrame {
 			ImageIcon icon = new ImageIcon("logo.png");
 			setIconImage(icon.getImage());
 			
+			//Rounding the win-rate at 2 decimal places with this trick
+			double temp = p.getWinRate();
+			temp = Math.round(temp * 100);
+			temp = temp / 100;
+			
 			correct.setText("Correct answers: " + p.getCorrect());
 			wrong.setText("Wrong answers: " + p.getWrong());
-			percentage.setText("Winrate: " + p.getWinRate());
+			percentage.setText("Winrate: " + temp);
 			
 			correct.setFont(new Font("Calibri", Font.PLAIN, 30));
 			wrong.setFont(new Font("Calibri", Font.PLAIN, 30));
@@ -61,12 +66,11 @@ public class Stats extends JFrame {
 			this.setSize(600, 800);
 			this.setTitle("Statistics");
 			this.setResizable(false);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			
-			System.out.println("Name: " + p.getName() + "\nCorrect: " + p.getCorrect() + "\nWrong: " + p.getWrong());
 		} catch (IOException | ClassNotFoundException e) { //FileNotFoundException is caught by the similar IOException
 			JOptionPane.showMessageDialog(null, "Couldn't find player!", "Error!", JOptionPane.ERROR_MESSAGE);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	
 	

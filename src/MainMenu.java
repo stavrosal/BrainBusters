@@ -1,12 +1,7 @@
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
-import javax.swing.ImageIcon;
 
 import javax.swing.*;
 
@@ -16,6 +11,7 @@ public class MainMenu extends JFrame {
 	private JButton play = new JButton("Play");
 	private JButton stats = new JButton("Stats");
 	private JButton credits = new JButton("Credits");
+	private JButton quit = new JButton("Quit");
 	private JLabel img = new JLabel();
 	private ImageIcon icon;
 	
@@ -23,6 +19,7 @@ public class MainMenu extends JFrame {
 		play.setBounds(400, 350, 150, 50);
 		stats.setBounds(400, 450, 150, 50);
 		credits.setBounds(400, 550, 150, 50);
+		quit.setBounds(400, 650, 150, 50);
 		name.setBounds(380, 250, 350, 50);
 		name.setFont(new Font("Calibri", Font.BOLD, 40));
 		
@@ -39,11 +36,13 @@ public class MainMenu extends JFrame {
 		panel.add(play);
 		panel.add(stats);
 		panel.add(credits);
+		panel.add(quit);
 		
 		ButtonListener listener = new ButtonListener();
 		play.addActionListener(listener);
 		stats.addActionListener(listener);
 		credits.addActionListener(listener);
+		quit.addActionListener(listener);
 		
 		
 		this.setContentPane(panel);
@@ -65,10 +64,13 @@ public class MainMenu extends JFrame {
 					}
 				}
 				else if (e.getSource() == stats) {
-					
+					new EnterName(0, 0, false);
 				}
 				else if (e.getSource() == credits) {
 					new Credits();
+				}
+				else if (e.getSource() == quit) {
+					MainMenu.this.dispose();
 				}
 			}
 		}

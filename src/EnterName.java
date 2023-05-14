@@ -1,7 +1,7 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
 
 
 import javax.swing.ImageIcon;
@@ -17,61 +17,78 @@ public class EnterName extends JFrame{
 	private JLabel text = new JLabel("Name: ");
 	private JLabel name_label = new JLabel("BrainBusters");
 	private JLabel img = new JLabel();
+	private JLabel lab = new JLabel("Enter your name...");
 	private JTextField field = new JTextField();
-	private JButton save = new JButton("Save");
+	private JButton button = new JButton();
 	private ImageIcon icon;
 	private int correct;
 	private int wrong;
 	
-	public EnterName(int correct, int wrong) {
-		this.correct = correct;
+	public EnterName(int correct, int wrong, boolean save) { //if save is true then the window is called for stats saving
+		this.correct = correct;								 //if save is false then the window is called for stat loading
 		this.wrong = wrong;
 		icon = new ImageIcon("logo.png");
 		setIconImage(icon.getImage());
 		
-		text.setBounds(350, 350, 150, 50);
+		if (save)
+			button.setText("Save");
+		else
+			button.setText("Load");
+		
+		text.setBounds(300, 350, 150, 50);
 		text.setFont(new Font("Calibri", Font.BOLD, 20));
 		
-		name_label.setBounds(380, 250, 350, 50);
+		name_label.setBounds(330, 250, 350, 50);
 		name_label.setFont(new Font("Calibri", Font.BOLD, 40));
 		
+		lab.setBounds(350, 280, 200, 100);
+		lab.setFont(new Font("Calibri", Font.ITALIC, 22));
+		
 		field.setText("Write here...");
-		field.setBounds(410, 360, 200, 25);
+		field.setBounds(360, 360, 200, 25);
 		
-		img.setBounds(380, 25, 200, 179);
+		img.setBounds(330, 25, 200, 179);
 		
-		save.setBounds(400, 450, 150, 50);
+		button.setBounds(350, 450, 150, 50);
 		
 		ButtonListener listener = new ButtonListener();
-		save.addActionListener(listener);
+		button.addActionListener(listener);
 		
 		ImageIcon logo = new ImageIcon("logo.png");
 		img.setIcon(logo);
 		
 		panel.add(img);
+		panel.add(lab);
 		panel.add(name_label);
 		panel.add(text);
 		panel.add(field);
-		panel.add(save);
+		panel.add(button);
+
 		
 		this.setContentPane(panel);
 		
 		this.setVisible(true);
-		this.setSize(1000, 800);
+		this.setSize(900, 600);
 		this.setTitle("Enter Name");
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String name = EnterName.this.field.getText();
-			if (e.getSource() == save) {
+			if (e.getSource() == button) {
+				
+				if ( ((JButton) e.getSource()).getText().equals("Save") ) { //Checks which button was pressed, Save or Load
 					Player p = new Player(name, correct, wrong);
 					p.saveStats();
-					System.out.println(correct+" " + wrong);
 					JOptionPane.showMessageDialog(null, "Statistics saved!");
 					new Stats(name);
+				}
+				else {
+					new Stats(name);
+				}
+				
 					EnterName.this.dispose();
 					
 			}
