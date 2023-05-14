@@ -73,7 +73,7 @@ public class Credits extends JFrame{
 		this.setVisible(true);
 		this.setSize(500, 800);
 		this.setTitle("Credits");
-		//this.setResizable(false);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
