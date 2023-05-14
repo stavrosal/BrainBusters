@@ -65,7 +65,7 @@ public class Stats extends JFrame {
 			this.setVisible(true);
 			this.setSize(600, 800);
 			this.setTitle("Statistics");
-			this.setResizable(false);
+			//this.setResizable(false);
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			
 		} catch (IOException | ClassNotFoundException e) { //FileNotFoundException is caught by the similar IOException
