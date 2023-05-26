@@ -34,12 +34,15 @@ public class SingleGame extends JFrame{
 	private JButton option4 = new JButton();
 	private JButton quit = new JButton();
 	private ImageIcon icon;
+	
+	private String link;
+	private String quiz_name;
 			
 	
-	public SingleGame(int count, int corr, int wrong) throws IOException {
-		
+	public SingleGame(String quiz_name, String link, int count, int corr, int wrong) throws IOException {
+		this.quiz_name = quiz_name;
+		this.link = link;
 		ArrayList<Question> questions = new ArrayList<Question>();
-		String link = "https://www.quiztriviagames.com/multiple-choice-trivia-questions/"; //Web-site to scrape the questions from
 		
 		Scrape test = new Scrape(link, questions);
 		test.ScrapeQuestions();
@@ -157,7 +160,7 @@ public class SingleGame extends JFrame{
 					try {
 						if (count+1 < max)
 							
-							new SingleGame(count+1, corr, wrong);
+							new SingleGame(SingleGame.this.quiz_name, SingleGame.this.link, count+1, corr, wrong);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -180,7 +183,8 @@ public class SingleGame extends JFrame{
 					lab2.setForeground(Color.RED);
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
-					wrong++;
+					if (correct != null) //We check if the answer is null (that means that the scraper couldn't find the answer) so we don't count that question
+						wrong++;
 				}
 			}
 				
@@ -196,7 +200,8 @@ public class SingleGame extends JFrame{
 					lab2.setForeground(Color.RED);
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
-					wrong++;
+					if (correct != null)
+						wrong++;
 				}
 			}
 				
@@ -212,7 +217,8 @@ public class SingleGame extends JFrame{
 					lab2.setForeground(Color.RED);
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
-					wrong++;
+					if (correct != null)
+						wrong++;
 				}
 			}
 				
@@ -228,12 +234,13 @@ public class SingleGame extends JFrame{
 					lab2.setForeground(Color.RED);
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
-					wrong++;
+					if (correct != null)
+						wrong++;
 				}
 					
 			}
 			if (e.getSource() == quit || count+1 == max) {
-				new EnterName(corr, wrong, true);
+				new EnterName(SingleGame.this.quiz_name, corr, wrong);
 				window.dispose();
 			}
 			

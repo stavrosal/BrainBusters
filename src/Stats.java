@@ -1,8 +1,11 @@
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.font.TextAttribute;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Hashtable;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,6 +16,7 @@ import javax.swing.JPanel;
 public class Stats extends JFrame {
 	private JPanel mainpanel = new JPanel();
 	private JLabel lab = new JLabel();
+	private JLabel quiz_name = new JLabel();
 	private JLabel correct = new JLabel();
 	private JLabel wrong = new JLabel();
 	private JLabel percentage = new JLabel();
@@ -29,33 +33,41 @@ public class Stats extends JFrame {
 			//GUI stuff
 			mainpanel.setLayout(new GridLayout(0,1));
 			
+			Map<TextAttribute, Object> map = new Hashtable<TextAttribute, Object>(); //This is needed for underlining the back-end and front-end
+			map.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+			
 			lab.setText(p.getName());
-			lab.setFont(new Font("Calibri", Font.BOLD, 60));
+			lab.setFont(new Font("Calibri", Font.BOLD, 60).deriveFont(map));
 			
 			
 			ImageIcon icon = new ImageIcon("logo.png");
 			setIconImage(icon.getImage());
+			
 			
 			//Rounding the win-rate at 2 decimal places with this trick
 			double temp = p.getWinRate();
 			temp = Math.round(temp * 100);
 			temp = temp / 100;
 			
+			quiz_name.setText("Quiz: " + p.getQuizName());
 			correct.setText("Correct answers: " + p.getCorrect());
 			wrong.setText("Wrong answers: " + p.getWrong());
 			percentage.setText("Winrate: " + temp);
 			
+			quiz_name.setFont(new Font("Calibri", Font.PLAIN, 25));
 			correct.setFont(new Font("Calibri", Font.PLAIN, 30));
 			wrong.setFont(new Font("Calibri", Font.PLAIN, 30));
 			percentage.setFont(new Font("Calibri", Font.PLAIN, 30));
 			
 			//Center items and add them to panel
 			lab.setHorizontalAlignment(JLabel.CENTER);
+			quiz_name.setHorizontalAlignment(JLabel.CENTER);
 			correct.setHorizontalAlignment(JLabel.CENTER);
 			wrong.setHorizontalAlignment(JLabel.CENTER);
 			percentage.setHorizontalAlignment(JLabel.CENTER);
 			
 			mainpanel.add(lab);
+			mainpanel.add(quiz_name);
 			mainpanel.add(correct);
 			mainpanel.add(wrong);
 			mainpanel.add(percentage);

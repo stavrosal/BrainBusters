@@ -2,6 +2,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
+
 
 import javax.swing.*;
 
@@ -54,17 +56,43 @@ public class MainMenu extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	public String[] SelectQuiz(){
+		HashMap<String, String> choices = new HashMap<String, String>();
+		choices.put("Food Quiz", "https://www.quiztriviagames.com/food-trivia-multiple-choice-questions/"); 
+		choices.put("Trivia Quiz", "https://www.quiztriviagames.com/multiple-choice-trivia-questions/");		
+		choices.put("History Quiz", "https://www.quiztriviagames.com/history-multiple-choice-questions/");
+		choices.put("Thanksgiving Quiz", "https://www.quiztriviagames.com/thanksgiving-multiple-choice-questions/");
+		choices.put("Family Quiz", "https://www.quiztriviagames.com/family-quiz/");
+		
+		
+		/* ADD HERE NEW QUIZES 
+		DONT FORGET TO ADD THE NAME TO THE names ARRAY TOO! */
+		
+
+		String[] names = {"Food Quiz", "Trivia Quiz", "History Quiz", "Thanksgiving Quiz", "Family Quiz"};
+		
+		String option = (String) JOptionPane.showInputDialog(null, "Select a Quiz", "Select", JOptionPane.PLAIN_MESSAGE, null, names, names[0]);
+		
+		String[] temp = {option, choices.get(option)};
+		
+		return temp; //Returns the quiz name and the link (they are needed in the SingleGame class)
+	}
+	
 		class ButtonListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == play) {
 					try {
-						new SingleGame(0, 0, 0);
+						String[] choice = SelectQuiz();
+						
+	 					if (choice[0] != null)
+							new SingleGame(choice[0], choice[1], 0, 0, 0);
+	 					
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 				}
 				else if (e.getSource() == stats) {
-					new EnterName(0, 0, false);
+					new EnterName(0, 0);
 				}
 				else if (e.getSource() == credits) {
 					new Credits();
@@ -75,4 +103,5 @@ public class MainMenu extends JFrame {
 			}
 		}
 
+		
 }

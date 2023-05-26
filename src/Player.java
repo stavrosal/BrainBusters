@@ -1,26 +1,31 @@
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 
-//import java.io.*;
+
 
 public class Player implements Serializable{
 	private String name;
+	private String quiz_name;
 	private int correct_answers;
 	private int wrong_answers;
 	private double win_rate;
 	
-	public Player(String name, int correct, int wrong) {
+	public Player(String name, String quiz_name, int correct, int wrong) {
 		this.name = name;
+		this.quiz_name = quiz_name;
 		this.correct_answers = correct;
 		this.wrong_answers = wrong;
 		if (wrong_answers != 0)
 			win_rate = (double) correct_answers / wrong_answers; //convert one of them to double so the result will be also double
 		else
 			win_rate = 0;
+	}
+	
+	public String getQuizName() {
+		return quiz_name;
 	}
 	
 	public String getName() {
