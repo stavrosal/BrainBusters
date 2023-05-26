@@ -21,7 +21,7 @@ public class Scrape {
 		doc = Jsoup.connect(link).timeout(6000).get();
 		Elements body = doc.select("div.entry-content.single-page");
 		
-		//System.out.println(body.select("ol").size());
+		//System.out.println(body.select("ol").size());  --FOR TESTING PURPOSES
 		
 		String q;
 		for (Element e : body.select("li")) {
@@ -38,19 +38,24 @@ public class Scrape {
 				
 				String ans = null;
 				for (Element tag : doc.select("strong")) {
-					if (tag.parent().normalName().equals("li") &&
-							!(tag.text().equals("the best quizzes for the ultimate trivia night!"))) {
-						for (String s : temp)
-							if (s.equals(tag.text())) {
+					if (tag.parent().normalName().equals("li") && 
+					!(tag.text().equals("the best quizzes for the ultimate trivia night!"))) {
+						for (String s : temp) {
+							String temp_ans = s.replaceAll("\\s", "").toUpperCase(); //Makes all upper-case and strip whitespaces to avoid any mismatch 
+							if (temp_ans.equals(tag.text().toUpperCase().replaceAll("\\s", ""))) { //With the website's answer
 								ans = s;
 								break;
 							}
+						}
 					}
 				}
 				
 				questions.add(new Question(q, temp, ans)); //Creates and adds a new object to the ArrayList
-				//for (Question x : questions)
-					//x.printQuestions();
+				
+				/*      ---FOR TESTING PURPOSES---
+				
+				for (Question x : questions)
+					x.printQuestions();   */
 			}
 			
 			

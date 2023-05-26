@@ -21,19 +21,67 @@ public class EnterName extends JFrame{
 	private JTextField field = new JTextField();
 	private JButton button = new JButton();
 	private ImageIcon icon;
+	private String quiz;
 	private int correct;
 	private int wrong;
 	
-	public EnterName(int correct, int wrong, boolean save) { //if save is true then the window is called for stats saving
-		this.correct = correct;								 //if save is false then the window is called for stat loading
+	public EnterName(String quiz, int correct, int wrong) { //the window is called for stats saving
+		this.quiz = quiz;
+		this.correct = correct;								
 		this.wrong = wrong;
 		icon = new ImageIcon("logo.png");
 		setIconImage(icon.getImage());
 		
-		if (save)
-			button.setText("Save");
-		else
-			button.setText("Load");
+		button.setText("Save");
+
+		
+		text.setBounds(300, 350, 150, 50);
+		text.setFont(new Font("Calibri", Font.BOLD, 20));
+		
+		name_label.setBounds(330, 250, 350, 50);
+		name_label.setFont(new Font("Calibri", Font.BOLD, 40));
+		
+		lab.setBounds(350, 280, 200, 100);
+		lab.setFont(new Font("Calibri", Font.ITALIC, 22));
+		
+		field.setText("Write here...");
+		field.setBounds(360, 360, 200, 25);
+		
+		img.setBounds(330, 25, 200, 179);
+		
+		button.setBounds(350, 450, 150, 50);
+		
+		ButtonListener listener = new ButtonListener();
+		button.addActionListener(listener);
+		
+		ImageIcon logo = new ImageIcon("logo.png");
+		img.setIcon(logo);
+		
+		panel.add(img);
+		panel.add(lab);
+		panel.add(name_label);
+		panel.add(text);
+		panel.add(field);
+		panel.add(button);
+
+		
+		this.setContentPane(panel);
+		
+		this.setVisible(true);
+		this.setSize(900, 600);
+		this.setTitle("Enter Name");
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+	
+	public EnterName(int correct, int wrong) { //the window is called for stats loading
+		this.correct = correct;								
+		this.wrong = wrong;
+		icon = new ImageIcon("logo.png");
+		setIconImage(icon.getImage());
+		
+	
+		button.setText("Load");
 		
 		text.setBounds(300, 350, 150, 50);
 		text.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -80,7 +128,7 @@ public class EnterName extends JFrame{
 			if (e.getSource() == button) {
 				
 				if ( ((JButton) e.getSource()).getText().equals("Save") ) { //Checks which button was pressed, Save or Load
-					Player p = new Player(name, correct, wrong);
+					Player p = new Player(name, quiz,  correct, wrong);
 					p.saveStats();
 					JOptionPane.showMessageDialog(null, "Statistics saved!");
 					new Stats(name);
