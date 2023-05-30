@@ -121,7 +121,8 @@ public class SingleGame extends JFrame{
 		this.setSize(1000, 800);
 		this.setTitle("BrainBusters");
 		//this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		//this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Prompts the user to use the QUIT button by disabling the X button on the upper right side
 	
 	}
 	
