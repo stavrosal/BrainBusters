@@ -26,7 +26,7 @@ public class EnterName extends JFrame{
 	private int wrong;
 	private int total_points;
 	
-	public EnterName(String quiz, int correct, int wrong) { //the window is called for stats saving
+	public EnterName(String quiz, int correct, int wrong, int total_points) { //the window is called for stats saving
 		this.quiz = quiz;
 		this.correct = correct;								
 		this.wrong = wrong;
