@@ -46,6 +46,10 @@ public class Player implements Serializable{
 		return win_rate;
 	}
 	
+	public int getTotalPoints(){
+		return total_points;
+	}
+	
 	
 	
 	public void saveStats() {
