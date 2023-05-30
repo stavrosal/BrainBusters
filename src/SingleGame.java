@@ -259,7 +259,7 @@ public class SingleGame extends JFrame{
 					
 			}
 			if (e.getSource() == quit || count+1 == max) {
-				new EnterName(SingleGame.this.quiz_name, corr, wrong);
+				new EnterName(SingleGame.this.quiz_name, corr, wrong, total_points);
 				window.dispose();
 			}
 			total_points = calculatePoints(check_answer, total_points);
