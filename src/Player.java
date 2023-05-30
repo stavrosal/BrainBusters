@@ -12,12 +12,14 @@ public class Player implements Serializable{
 	private int correct_answers;
 	private int wrong_answers;
 	private double win_rate;
+	private int total_points;
 	
-	public Player(String name, String quiz_name, int correct, int wrong) {
+	public Player(String name, String quiz_name, int correct, int wrong, int total_points) {
 		this.name = name;
 		this.quiz_name = quiz_name;
 		this.correct_answers = correct;
 		this.wrong_answers = wrong;
+		this.total_points = total_points;
 		if (wrong_answers != 0)
 			win_rate = (double) correct_answers / wrong_answers; //convert one of them to double so the result will be also double
 		else

@@ -24,11 +24,13 @@ public class EnterName extends JFrame{
 	private String quiz;
 	private int correct;
 	private int wrong;
+	private int total_points;
 	
 	public EnterName(String quiz, int correct, int wrong) { //the window is called for stats saving
 		this.quiz = quiz;
 		this.correct = correct;								
 		this.wrong = wrong;
+		this.total_points = total_points;
 		icon = new ImageIcon("logo.png");
 		setIconImage(icon.getImage());
 		
@@ -128,7 +130,8 @@ public class EnterName extends JFrame{
 			if (e.getSource() == button) {
 				
 				if ( ((JButton) e.getSource()).getText().equals("Save") ) { //Checks which button was pressed, Save or Load
-					Player p = new Player(name, quiz,  correct, wrong);
+//					Player p = new Player(name, quiz,  correct, wrong);
+					Player p = new Player(name, quiz, correct, wrong, total_points);
 					p.saveStats();
 					JOptionPane.showMessageDialog(null, "Statistics saved!");
 					new Stats(name);

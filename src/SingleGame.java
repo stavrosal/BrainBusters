@@ -28,6 +28,7 @@ public class SingleGame extends JFrame{
 	private JLabel correctAns = new JLabel();
 	private JLabel lab = new JLabel();
 	private JLabel lab2 = new JLabel();
+	private JLabel points = new JLabel();
 	private JButton option1 = new JButton();
 	private JButton option2 = new JButton();
 	private JButton option3 = new JButton();
@@ -35,13 +36,17 @@ public class SingleGame extends JFrame{
 	private JButton quit = new JButton();
 	private ImageIcon icon;
 	
+//	private int total_points=0;
+	
 	private String link;
 	private String quiz_name;
+	private int total_points;
 			
 	
-	public SingleGame(String quiz_name, String link, int count, int corr, int wrong) throws IOException {
+	public SingleGame(String quiz_name, String link, int count, int corr, int wrong, int total_points) throws IOException {
 		this.quiz_name = quiz_name;
 		this.link = link;
+		this.total_points = total_points;
 		ArrayList<Question> questions = new ArrayList<Question>();
 		
 		Scrape test = new Scrape(link, questions);
@@ -60,6 +65,7 @@ public class SingleGame extends JFrame{
 		
 		lab.setFont(new Font("Calibri", Font.BOLD, 30));
 		lab2.setFont(new Font("Calibri", Font.BOLD, 50));
+		points.setFont(new Font("Calibri", Font.BOLD, 40));
 		correctAns.setFont(new Font("Calibri", Font.BOLD, 30));
 		
 		
@@ -72,9 +78,11 @@ public class SingleGame extends JFrame{
 		quit.setText("QUIT");
 		quit.setAlignmentX(Component.CENTER_ALIGNMENT); //Center the labels and the button
 		lab2.setAlignmentX(Component.CENTER_ALIGNMENT);
+		points.setAlignmentX(Component.CENTER_ALIGNMENT);
 		correctAns.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		quitPanel.add(lab2);
+		quitPanel.add(points);
 		quitPanel.add(correctAns); //label which will show the correct answer (triggered by button press)
 		quitPanel.add(Box.createVerticalGlue()); //this will make some distance between the corr/wrong label and the quit button
 		quitPanel.add(quit);
@@ -133,6 +141,9 @@ public class SingleGame extends JFrame{
 		private int wrong;
 		private int max; //the number of questions in total
 		
+		private boolean check_answer;
+
+		
 		public ButtonListener(String correct, int count, int max, SingleGame window, int corr, int wrong) {
 			this.correct = correct;
 			this.count = count;
@@ -160,7 +171,7 @@ public class SingleGame extends JFrame{
 					try {
 						if (count+1 < max)
 							
-							new SingleGame(SingleGame.this.quiz_name, SingleGame.this.link, count+1, corr, wrong);
+							new SingleGame(SingleGame.this.quiz_name, SingleGame.this.link, count+1, corr, wrong, SingleGame.this.total_points);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -177,6 +188,7 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					check_answer = true;
 					corr++;
 				}
 				else {
@@ -184,6 +196,7 @@ public class SingleGame extends JFrame{
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
 					if (correct != null) //We check if the answer is null (that means that the scraper couldn't find the answer) so we don't count that question
+						check_answer = false;
 						wrong++;
 				}
 			}
@@ -194,6 +207,7 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					check_answer = true;
 					corr++;
 				}
 				else {
@@ -201,6 +215,7 @@ public class SingleGame extends JFrame{
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
 					if (correct != null)
+						check_answer = false;
 						wrong++;
 				}
 			}
@@ -211,6 +226,7 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					check_answer = true;
 					corr++;
 				}
 				else {
@@ -218,6 +234,7 @@ public class SingleGame extends JFrame{
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
 					if (correct != null)
+						check_answer = false;
 						wrong++;
 				}
 			}
@@ -228,6 +245,7 @@ public class SingleGame extends JFrame{
 				if (ans.equals(correct)) {
 					window.lab2.setForeground(Color.GREEN);
 					window.lab2.setText("\nCORRECT!");
+					check_answer = true;
 					corr++;
 				}
 				else {
@@ -235,6 +253,7 @@ public class SingleGame extends JFrame{
 					window.lab2.setText("WRONG!");	
 					window.correctAns.setText("Correct Answer: " + correct);
 					if (correct != null)
+						check_answer = false;
 						wrong++;
 				}
 					
@@ -243,8 +262,26 @@ public class SingleGame extends JFrame{
 				new EnterName(SingleGame.this.quiz_name, corr, wrong);
 				window.dispose();
 			}
+			total_points = calculatePoints(check_answer, total_points);
+			
+			window.points.setForeground(Color.BLUE);
+
+	
+			window.points.setText("Total points: " + String.valueOf(total_points));
+
+//			System.out.println(total_points);
 			
 		}
 	}
+	
+	public int calculatePoints(boolean check_answer, int total_points) {
+		if (check_answer) {
+	  		return total_points = total_points + 20;
+		}
+		else {
+			return total_points; //h total_points = total_points - X;
+		}
+	}
+	
 	
 }
