@@ -35,9 +35,6 @@ public class SingleGame extends JFrame{
 	private JButton option4 = new JButton();
 	private JButton quit = new JButton();
 	private ImageIcon icon;
-	
-//	private int total_points=0;
-	
 	private String link;
 	private String quiz_name;
 	private int total_points;
@@ -178,7 +175,7 @@ public class SingleGame extends JFrame{
 				}
 			};
 			
-			Timer timer = new Timer(1500, listen); //Creates the timer with 1.5 second wait
+			Timer timer = new Timer(1800, listen); //Creates the timer with 1.5 second wait
 			timer.setRepeats(false); //Makes the timer execute only once
 				
 			
@@ -269,7 +266,7 @@ public class SingleGame extends JFrame{
 	
 			window.points.setText("Total points: " + String.valueOf(total_points));
 
-//			System.out.println(total_points);
+			//System.out.println(total_points);
 			
 		}
 	}

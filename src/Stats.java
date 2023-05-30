@@ -17,9 +17,10 @@ public class Stats extends JFrame {
 	private JPanel mainpanel = new JPanel();
 	private JLabel lab = new JLabel();
 	private JLabel quiz_name = new JLabel();
+	private JLabel points = new JLabel();
 	private JLabel correct = new JLabel();
 	private JLabel wrong = new JLabel();
-	private JLabel percentage = new JLabel();
+	private JLabel percentage = new JLabel();	
 	
 	
 	public Stats(String name) {
@@ -50,11 +51,13 @@ public class Stats extends JFrame {
 			temp = temp / 100;
 			
 			quiz_name.setText("Quiz: " + p.getQuizName());
+			points.setText("Points: " + p.getTotalPoints());
 			correct.setText("Correct answers: " + p.getCorrect());
 			wrong.setText("Wrong answers: " + p.getWrong());
 			percentage.setText("Winrate: " + temp);
 			
 			quiz_name.setFont(new Font("Calibri", Font.PLAIN, 25));
+			points.setFont(new Font("Calibri", Font.PLAIN, 25));
 			correct.setFont(new Font("Calibri", Font.PLAIN, 30));
 			wrong.setFont(new Font("Calibri", Font.PLAIN, 30));
 			percentage.setFont(new Font("Calibri", Font.PLAIN, 30));
@@ -62,12 +65,14 @@ public class Stats extends JFrame {
 			//Center items and add them to panel
 			lab.setHorizontalAlignment(JLabel.CENTER);
 			quiz_name.setHorizontalAlignment(JLabel.CENTER);
+			points.setHorizontalAlignment(JLabel.CENTER);
 			correct.setHorizontalAlignment(JLabel.CENTER);
 			wrong.setHorizontalAlignment(JLabel.CENTER);
 			percentage.setHorizontalAlignment(JLabel.CENTER);
 			
 			mainpanel.add(lab);
 			mainpanel.add(quiz_name);
+			mainpanel.add(points);
 			mainpanel.add(correct);
 			mainpanel.add(wrong);
 			mainpanel.add(percentage);

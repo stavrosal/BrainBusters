@@ -130,7 +130,6 @@ public class EnterName extends JFrame{
 			if (e.getSource() == button) {
 				
 				if ( ((JButton) e.getSource()).getText().equals("Save") ) { //Checks which button was pressed, Save or Load
-//					Player p = new Player(name, quiz,  correct, wrong);
 					Player p = new Player(name, quiz, correct, wrong, total_points);
 					p.saveStats();
 					JOptionPane.showMessageDialog(null, "Statistics saved!");
