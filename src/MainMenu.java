@@ -85,7 +85,7 @@ public class MainMenu extends JFrame {
 						String[] choice = SelectQuiz();
 						
 	 					if (choice[0] != null)
-							new SingleGame(choice[0], choice[1], 0, 0, 0);
+							new SingleGame(choice[0], choice[1], 0, 0, 0, 0);
 	 					
 					} catch (IOException e1) {
 						e1.printStackTrace();
