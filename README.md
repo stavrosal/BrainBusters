@@ -1,4 +1,4 @@
-![](https://github.com/stavrosal/BrainBusters/blob/main/logo.png)
+![](https://github.com/stavrosal/BrainBusters/blob/main/src/images/logo.png)
 
 # BrainBusters 
  A web-scraping quiz made in Java using JSoup
