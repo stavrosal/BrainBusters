@@ -1,6 +1,7 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,6 +9,7 @@ import java.awt.FlowLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -34,7 +36,6 @@ public class SingleGame extends JFrame{
 	private JButton option3 = new JButton();
 	private JButton option4 = new JButton();
 	private JButton quit = new JButton();
-	private ImageIcon icon;
 	private String link;
 	private String quiz_name;
 	private int total_points;
@@ -110,8 +111,14 @@ public class SingleGame extends JFrame{
 		quit.addActionListener(listener);
 		
 		
-		icon = new ImageIcon("logo.png");
-		setIconImage(icon.getImage());
+		try {
+			 BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png")); //Loading the image with this way in order to make the executable jar
+			 ImageIcon logo = new ImageIcon(image);
+			 
+			 setIconImage(logo.getImage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
 		mainpanel.add(questionp);

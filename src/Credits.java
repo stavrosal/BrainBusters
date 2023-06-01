@@ -1,8 +1,11 @@
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +18,6 @@ public class Credits extends JFrame{
 	private JLabel label3 = new JLabel("Front-end");
 	private JLabel back_end = new JLabel();
 	private JLabel front_end = new JLabel();
-	private ImageIcon icon;
 	
 	public Credits() {
 		label.setBounds(170, 0, 150, 150);
@@ -25,6 +27,7 @@ public class Credits extends JFrame{
 		map.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 		
 		label2.setBounds(180, 100, 150, 100);
+		
 		
 		label2.setFont(new Font("Calibri", Font.ITALIC, 30).deriveFont(map));
 		
@@ -53,8 +56,17 @@ public class Credits extends JFrame{
 		
 		
 		
-		icon = new ImageIcon("logo.png");
-		setIconImage(icon.getImage());
+		//icon = new ImageIcon("logo.png");
+		//setIconImage(icon.getImage());
+		
+		try {
+			 BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png")); //Loading the image with this way in order to make the executable jar
+			 ImageIcon logo = new ImageIcon(image);
+			 
+			 setIconImage(logo.getImage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		panel.add(label);
 		panel.add(label2);

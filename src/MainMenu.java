@@ -1,10 +1,12 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import java.util.HashMap;
 
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class MainMenu extends JFrame {
@@ -15,7 +17,6 @@ public class MainMenu extends JFrame {
 	private JButton credits = new JButton("Credits");
 	private JButton quit = new JButton("Quit");
 	private JLabel img = new JLabel();
-	private ImageIcon icon;
 	
 	public MainMenu() {
 		play.setBounds(400, 350, 150, 50);
@@ -27,11 +28,18 @@ public class MainMenu extends JFrame {
 		
 		img.setBounds(380, 25, 200, 179);
 		
-		icon = new ImageIcon("logo.png");
-		setIconImage(icon.getImage());
 		
-		ImageIcon logo = new ImageIcon("logo.png");
-		img.setIcon(logo);
+		try {
+			 BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png")); //Loading the image with this way in order to make the executable jar
+			 ImageIcon logo = new ImageIcon(image);
+			 
+			 img.setIcon(logo);
+			 
+			 setIconImage(logo.getImage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
 		
 		panel.add(img);
 		panel.add(name);

@@ -1,12 +1,14 @@
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Hashtable;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,9 +42,14 @@ public class Stats extends JFrame {
 			lab.setText(p.getName());
 			lab.setFont(new Font("Calibri", Font.BOLD, 60).deriveFont(map));
 			
-			
-			ImageIcon icon = new ImageIcon("logo.png");
-			setIconImage(icon.getImage());
+			try {
+				 BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png")); //Loading the image with this way in order to make the executable jar
+				 ImageIcon logo = new ImageIcon(image);
+				 
+				 setIconImage(logo.getImage());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			
 			//Rounding the win-rate at 2 decimal places with this trick

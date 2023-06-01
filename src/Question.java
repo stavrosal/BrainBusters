@@ -23,6 +23,7 @@ public class Question {
 		return correct_answer;
 	}
 	
+	//FOR TESTING PURPOSES
 	public void printQuestions() {
 		System.out.println(question);
 		for (String answer : answers)

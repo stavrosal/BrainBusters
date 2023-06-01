@@ -1,9 +1,10 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-
-
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -55,9 +56,18 @@ public class EnterName extends JFrame{
 		
 		ButtonListener listener = new ButtonListener();
 		button.addActionListener(listener);
+
 		
-		ImageIcon logo = new ImageIcon("logo.png");
-		img.setIcon(logo);
+		try {
+			 BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png"));
+			 ImageIcon logo = new ImageIcon(image);
+			 
+			 img.setIcon(logo); //set the image
+			 
+			 setIconImage(logo.getImage()); //set the icon of the window
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		panel.add(img);
 		panel.add(lab);
@@ -79,8 +89,17 @@ public class EnterName extends JFrame{
 	public EnterName(int correct, int wrong) { //the window is called for stats loading
 		this.correct = correct;								
 		this.wrong = wrong;
-		icon = new ImageIcon("logo.png");
-		setIconImage(icon.getImage());
+				
+		try {
+			BufferedImage image = ImageIO.read(MainMenu.class.getResource("/imgs/logo.png"));
+			ImageIcon logo = new ImageIcon(image); 
+					 
+			img.setIcon(logo); //set the image
+					 
+			setIconImage(logo.getImage()); //set the icon of the logo
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	
 		button.setText("Load");
@@ -103,9 +122,7 @@ public class EnterName extends JFrame{
 		
 		ButtonListener listener = new ButtonListener();
 		button.addActionListener(listener);
-		
-		ImageIcon logo = new ImageIcon("logo.png");
-		img.setIcon(logo);
+
 		
 		panel.add(img);
 		panel.add(lab);
