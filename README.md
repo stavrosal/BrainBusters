@@ -1,4 +1,4 @@
-![](https://github.com/stavrosal/BrainBusters/blob/main/logo.png)
+![](https://github.com/stavrosal/BrainBusters/blob/main/src/images/logo.png)
 
 # BrainBusters 
  A web-scraping quiz made in Java using JSoup
@@ -16,3 +16,16 @@ University of Macedonia - Spring semester 2022-2023
 
 For support, contact [@stavrosal](https://www.github.com/stavrosal)
 
+## Deployment
+
+To run this project, create a folder that contains:
+    
+- a sub-folder named "players"
+- BrainBusters.jar
+
+## Requirements
+
+In order to run this project, you need:
+- a connection to the Internet
+- Java 17
+    
