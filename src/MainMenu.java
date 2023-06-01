@@ -27,12 +27,21 @@ public class MainMenu extends JFrame {
 		
 		img.setBounds(380, 25, 200, 179);
 		
-		icon = new ImageIcon("logo.png");
+//		icon = new ImageIcon("logo.png");
+//		setIconImage(icon.getImage());
+//		
+//		ImageIcon logo = new ImageIcon("logo.png");
+//		img.setIcon(logo);
+		
+		java.net.URL imgURL = getClass().getResource("images/logo.png");
+
+		//icon = new ImageIcon("logo.png");
+		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 		
-		ImageIcon logo = new ImageIcon("logo.png");
+		ImageIcon logo = new ImageIcon(imgURL);
 		img.setIcon(logo);
-		
+		 
 		panel.add(img);
 		panel.add(name);
 		panel.add(play);

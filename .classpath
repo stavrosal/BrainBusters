@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Admin/Desktop/ΠΑΜΑΚ/2ο ετος/4ο εξάμηνο/ΤΕΧΝΟΛΟΓΙΑ ΛΟΓΙΣΜΙΚΟΥ/Ομαδική Εργασία/jsoup-1.15.4.jar"/>
+	<classpathentry kind="lib" path="/Users/aphrodite/Desktop/BrainBusters/jsoup-1.15.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
