@@ -21,7 +21,6 @@ public class Stats extends JFrame {
 	private JLabel correct = new JLabel();
 	private JLabel wrong = new JLabel();
 	private JLabel percentage = new JLabel();	
-	private JLabel img = new JLabel();
 	private ImageIcon icon;
 	
 	
@@ -43,22 +42,11 @@ public class Stats extends JFrame {
 			lab.setFont(new Font("Calibri", Font.BOLD, 60).deriveFont(map));
 			
 			
-//			ImageIcon icon = new ImageIcon("logo.png");
-//			setIconImage(icon.getImage());
-			
 			java.net.URL imgURL = getClass().getResource("images/logo.png");
 
-			//icon = new ImageIcon("logo.png");
 			icon = new ImageIcon(imgURL);
 			setIconImage(icon.getImage());
 			
-			
-			ImageIcon logo = new ImageIcon(imgURL);
-			img.setIcon(logo);
-			
-			mainpanel.add(img);
-			
-		
 			
 			//Rounding the win-rate at 2 decimal places with this trick
 			double temp = p.getWinRate();

@@ -56,12 +56,9 @@ public class EnterName extends JFrame{
 		ButtonListener listener = new ButtonListener();
 		button.addActionListener(listener);
 		
-//		ImageIcon logo = new ImageIcon("logo.png");
-//		img.setIcon(logo);
 		
 		java.net.URL imgURL = getClass().getResource("images/logo.png");
 
-		//icon = new ImageIcon("logo.png");
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 		
@@ -89,12 +86,10 @@ public class EnterName extends JFrame{
 	public EnterName(int correct, int wrong) { //the window is called for stats loading
 		this.correct = correct;								
 		this.wrong = wrong;
-//		icon = new ImageIcon("logo.png");
-//		setIconImage(icon.getImage());
 		
 		java.net.URL imgURL = getClass().getResource("images/logo.png");
 
-		//icon = new ImageIcon("logo.png");
+
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 		
@@ -124,11 +119,7 @@ public class EnterName extends JFrame{
 		ButtonListener listener = new ButtonListener();
 		button.addActionListener(listener);
 		
-//		ImageIcon logo = new ImageIcon("logo.png");
-//		img.setIcon(logo);
-		
 
-		//icon = new ImageIcon("logo.png");
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 		

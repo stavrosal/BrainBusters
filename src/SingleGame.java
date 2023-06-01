@@ -109,13 +109,9 @@ public class SingleGame extends JFrame{
 		option4.addActionListener(listener);
 		quit.addActionListener(listener);
 		
-//		
-//		icon = new ImageIcon("logo.png");
-//		setIconImage(icon.getImage());
 		
 		java.net.URL imgURL = getClass().getResource("images/logo.png");
 
-		//icon = new ImageIcon("logo.png");
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 		
@@ -130,7 +126,6 @@ public class SingleGame extends JFrame{
 		this.setVisible(true);
 		this.setSize(1000, 800);
 		this.setTitle("BrainBusters");
-		//this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Prompts the user to use the QUIT button by disabling the X button on the upper right side
 	
 	}
@@ -271,7 +266,6 @@ public class SingleGame extends JFrame{
 	
 			window.points.setText("Total points: " + String.valueOf(total_points));
 
-			//System.out.println(total_points);
 			
 		}
 	}

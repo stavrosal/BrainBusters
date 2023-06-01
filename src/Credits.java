@@ -52,13 +52,8 @@ public class Credits extends JFrame{
 		front_end.setBounds(150, 470, 350, 220);
 		
 		
-		
-//		icon = new ImageIcon("logo.png");
-//		setIconImage(icon.getImage());
-		
 		java.net.URL imgURL = getClass().getResource("images/logo.png");
-
-		//icon = new ImageIcon("logo.png");
+		
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
 
