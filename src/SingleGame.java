@@ -109,10 +109,15 @@ public class SingleGame extends JFrame{
 		option4.addActionListener(listener);
 		quit.addActionListener(listener);
 		
+//		
+//		icon = new ImageIcon("logo.png");
+//		setIconImage(icon.getImage());
 		
-		icon = new ImageIcon("logo.png");
+		java.net.URL imgURL = getClass().getResource("images/logo.png");
+
+		//icon = new ImageIcon("logo.png");
+		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
-		
 		
 		mainpanel.add(questionp);
 		mainpanel.add(ansp1);
