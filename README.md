@@ -28,4 +28,5 @@ To run this project, create a folder that contains:
 In order to run this project, you need:
 - a connection to the Internet
 - Java 17
+- Screen resolution bigger than 800x600
     
