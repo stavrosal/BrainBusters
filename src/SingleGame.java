@@ -122,9 +122,16 @@ public class SingleGame extends JFrame{
 		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.PAGE_AXIS));
 		
 		this.setContentPane(mainpanel);
+		
+		ScreenSize sc = ScreenSize.getInstance();
+
+        int width = sc.getWidth() - 100 ;
+
+        int height = sc.getHeight() - 100;
+           
 
 		this.setVisible(true);
-		this.setSize(1000, 800);
+		this.setSize(width, height);
 		this.setTitle("BrainBusters");
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Prompts the user to use the QUIT button by disabling the X button on the upper right side
 	
@@ -155,6 +162,7 @@ public class SingleGame extends JFrame{
 			window.option2.setEnabled(false);
 			window.option3.setEnabled(false);
 			window.option4.setEnabled(false);
+			window.quit.setEnabled(false);
 		}
 		
 		public void actionPerformed(ActionEvent e) {
@@ -275,7 +283,7 @@ public class SingleGame extends JFrame{
 	  		return total_points = total_points + 20;
 		}
 		else {
-			return total_points; //h total_points = total_points - X;
+			return total_points; 
 		}
 	}
 	

@@ -82,8 +82,12 @@ public class Stats extends JFrame {
 			
 			this.setContentPane(mainpanel);
 			
+			ScreenSize sc = ScreenSize.getInstance();
+
+	        int height = sc.getHeight() - 100;
+			
 			this.setVisible(true);
-			this.setSize(600, 800);
+			this.setSize(500, height);
 			this.setTitle("Statistics");
 			//this.setResizable(false);
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

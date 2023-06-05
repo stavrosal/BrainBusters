@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,21 +36,22 @@ public class EnterName extends JFrame{
 		button.setText("Save");
 
 		
-		text.setBounds(300, 350, 150, 50);
+		text.setBounds(220, 350, 150, 50);
 		text.setFont(new Font("Calibri", Font.BOLD, 20));
 		
-		name_label.setBounds(330, 250, 350, 50);
+		name_label.setBounds(250, 250, 350, 50);
 		name_label.setFont(new Font("Calibri", Font.BOLD, 40));
 		
-		lab.setBounds(350, 280, 200, 100);
+		lab.setBounds(270, 280, 200, 100);
 		lab.setFont(new Font("Calibri", Font.ITALIC, 22));
 		
 		field.setText("Write here...");
-		field.setBounds(360, 360, 200, 25);
+		field.setBounds(280, 360, 200, 25);
 		
-		img.setBounds(330, 25, 200, 179);
+		img.setBounds(250, 25, 200, 179);
 		
-		button.setBounds(350, 450, 150, 50);
+		button.setBounds(270, 450, 150, 50);
+		
 		
 		ButtonListener listener = new ButtonListener();
 		button.addActionListener(listener);
@@ -76,8 +76,12 @@ public class EnterName extends JFrame{
 		
 		this.setContentPane(panel);
 		
+		ScreenSize sc = ScreenSize.getInstance();
+
+        int height = sc.getHeight() - 100;
+		
 		this.setVisible(true);
-		this.setSize(900, 600);
+		this.setSize(700, height);
 		this.setTitle("Enter Name");
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -86,9 +90,33 @@ public class EnterName extends JFrame{
 	public EnterName(int correct, int wrong) { //the window is called for stats loading
 		this.correct = correct;								
 		this.wrong = wrong;
+		icon = new ImageIcon("logo.png");
+		setIconImage(icon.getImage());
+		
+		button.setText("Save");
+
+		
+		text.setBounds(220, 350, 150, 50);
+		text.setFont(new Font("Calibri", Font.BOLD, 20));
+		
+		name_label.setBounds(250, 250, 350, 50);
+		name_label.setFont(new Font("Calibri", Font.BOLD, 40));
+		
+		lab.setBounds(270, 280, 200, 100);
+		lab.setFont(new Font("Calibri", Font.ITALIC, 22));
+		
+		field.setText("Write here...");
+		field.setBounds(280, 360, 200, 25);
+		
+		img.setBounds(250, 25, 200, 179);
+		
+		button.setBounds(270, 450, 150, 50);
+		
+		ButtonListener listener = new ButtonListener();
+		button.addActionListener(listener);
+		
 		
 		java.net.URL imgURL = getClass().getResource("images/logo.png");
-
 
 		icon = new ImageIcon(imgURL);
 		setIconImage(icon.getImage());
@@ -96,35 +124,6 @@ public class EnterName extends JFrame{
 		
 		ImageIcon logo = new ImageIcon(imgURL);
 		img.setIcon(logo);
-		
-	
-		button.setText("Load");
-		
-		text.setBounds(300, 350, 150, 50);
-		text.setFont(new Font("Calibri", Font.BOLD, 20));
-		
-		name_label.setBounds(330, 250, 350, 50);
-		name_label.setFont(new Font("Calibri", Font.BOLD, 40));
-		
-		lab.setBounds(350, 280, 200, 100);
-		lab.setFont(new Font("Calibri", Font.ITALIC, 22));
-		
-		field.setText("Write here...");
-		field.setBounds(360, 360, 200, 25);
-		
-		img.setBounds(330, 25, 200, 179);
-		
-		button.setBounds(350, 450, 150, 50);
-		
-		ButtonListener listener = new ButtonListener();
-		button.addActionListener(listener);
-		
-
-		icon = new ImageIcon(imgURL);
-		setIconImage(icon.getImage());
-		
-		img.setIcon(logo);
-		
 		
 		panel.add(img);
 		panel.add(lab);
@@ -136,8 +135,12 @@ public class EnterName extends JFrame{
 		
 		this.setContentPane(panel);
 		
+		ScreenSize sc = ScreenSize.getInstance();
+
+        int height = sc.getHeight() - 100;
+		
 		this.setVisible(true);
-		this.setSize(900, 600);
+		this.setSize(700, height);
 		this.setTitle("Enter Name");
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

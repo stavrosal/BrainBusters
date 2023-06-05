@@ -67,10 +67,14 @@ public class Credits extends JFrame{
 		
 		this.setContentPane(panel);
 		
+		ScreenSize sc = ScreenSize.getInstance();
+		
+        int height = sc.getHeight() - 50; //Here the width doesn't need adjustment
+		
 		this.setVisible(true);
-		this.setSize(500, 800);
+		this.setSize(500, height);
 		this.setTitle("Credits");
-		this.setResizable(false);
+		//this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
