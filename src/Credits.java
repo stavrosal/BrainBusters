@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Credits extends JFrame{
 	private JPanel panel = new JPanel(null); 
 	private JLabel label = new JLabel("Credits");
@@ -74,7 +75,6 @@ public class Credits extends JFrame{
 		this.setVisible(true);
 		this.setSize(500, height);
 		this.setTitle("Credits");
-		//this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	

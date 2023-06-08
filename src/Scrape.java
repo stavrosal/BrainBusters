@@ -28,11 +28,10 @@ public class Scrape {
 			q = e.ownText().strip();
 			if (e.childrenSize() > 0 && e.child(0).normalName().equals("ol")) {
 				
-				//System.out.println(q);
+				//System.out.println(q); --FOR TESTING PURPOSES
 			
 				ArrayList<String> temp = new ArrayList<String>();
 				for (Element child : e.child(0).children()) {
-					//System.out.println("    " + child.text());
 					temp.add(child.text());
 				}
 				

@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 	private JPanel panel = new JPanel(new FlowLayout());
 	private JPanel img_panel = new JPanel();
@@ -80,13 +81,13 @@ public class MainMenu extends JFrame {
 		choices.put("History Quiz", "https://www.quiztriviagames.com/history-multiple-choice-questions/");
 		choices.put("Thanksgiving Quiz", "https://www.quiztriviagames.com/thanksgiving-multiple-choice-questions/");
 		choices.put("Family Quiz", "https://www.quiztriviagames.com/family-quiz/");
-		
+		choices.put("Christmas Quiz", "https://www.quiztriviagames.com/christmas-multiple-choice-trivia-questions/");
 		
 		/* ADD HERE NEW QUIZES 
 		DONT FORGET TO ADD THE NAME TO THE names ARRAY TOO! */
 		
 
-		String[] names = {"Food Quiz", "Trivia Quiz", "History Quiz", "Thanksgiving Quiz", "Family Quiz"};
+		String[] names = {"Food Quiz", "Trivia Quiz", "History Quiz", "Thanksgiving Quiz", "Family Quiz", "Christmas Quiz"};
 		
 		String option = (String) JOptionPane.showInputDialog(null, "Select a Quiz", "Select", JOptionPane.PLAIN_MESSAGE, null, names, names[0]);
 		

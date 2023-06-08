@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Stats extends JFrame {
 	private JPanel mainpanel = new JPanel();
 	private JLabel lab = new JLabel();
@@ -94,7 +95,6 @@ public class Stats extends JFrame {
 			
 		} catch (IOException | ClassNotFoundException e) { //FileNotFoundException is caught by the similar IOException
 			JOptionPane.showMessageDialog(null, "Couldn't find player!", "Error!", JOptionPane.ERROR_MESSAGE);
-			//e.printStackTrace();
 		}
 	
 	

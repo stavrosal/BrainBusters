@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 
-
+@SuppressWarnings("serial")
 public class Player implements Serializable{
 	private String name;
 	private String quiz_name;

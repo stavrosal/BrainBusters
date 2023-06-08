@@ -2,6 +2,9 @@ import javax.swing.JOptionPane;
 
 public class Main {
 	public static void main(String[] args){
+		
+		//DEN YLOPOIITHIKE H DYNATOTHTA MULTI-PLAYER
+		
 		ScreenSize sc = ScreenSize.getInstance();
 		
 		int height = sc.getHeight(); //Checks the user's screen size

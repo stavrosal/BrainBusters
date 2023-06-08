@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class EnterName extends JFrame{
 	private JPanel panel = new JPanel(null);
 	private JLabel text = new JLabel("Name: ");
@@ -93,7 +94,7 @@ public class EnterName extends JFrame{
 		icon = new ImageIcon("logo.png");
 		setIconImage(icon.getImage());
 		
-		button.setText("Save");
+		button.setText("Load");
 
 		
 		text.setBounds(220, 350, 150, 50);

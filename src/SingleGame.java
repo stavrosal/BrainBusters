@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class SingleGame extends JFrame{
 	private JPanel mainpanel = new JPanel();
 	private JPanel questionp = new JPanel(new FlowLayout());
