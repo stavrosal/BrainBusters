@@ -85,7 +85,7 @@ public class Stats extends JFrame {
 			
 			ScreenSize sc = ScreenSize.getInstance();
 
-	        int height = sc.getHeight() - 100;
+	        	int height = sc.getHeight() - 100;
 			
 			this.setVisible(true);
 			this.setSize(500, height);
